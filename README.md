@@ -22,7 +22,7 @@ Open the database.json file and configure values for properties...
 Run `npm run start` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
 
 ## Running unit tests
-
+Inside .env file set NODE_ENV=test
 Run `npm run test` to execute the unit tests via Jasmine
 
 ## Further help
