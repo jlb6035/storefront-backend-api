@@ -6,13 +6,13 @@ export type Order = {
 };
 
 export class OrderStore{
-    async index(): Promise<Order>{
+    async index(): Promise<Order[]>{
         try{
-            const conn = Client.connect();
+            const conn = await Client.connect();
             const sql = 'SELECT * FROM orders;';
             const result = await conn.query(sql);
             conn.release();
-            return result.rows[0];
+            return result.rows;
         } catch(err){
             throw new Error(`Something went wrong... ${err}`);
         }

@@ -50,18 +50,20 @@ var OrderStore = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        conn = database_1.default.connect();
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, database_1.default.connect()];
+                    case 1:
+                        conn = _a.sent();
                         sql = 'SELECT * FROM orders;';
                         return [4 /*yield*/, conn.query(sql)];
-                    case 1:
+                    case 2:
                         result = _a.sent();
                         conn.release();
-                        return [2 /*return*/, result.rows[0]];
-                    case 2:
+                        return [2 /*return*/, result.rows];
+                    case 3:
                         err_1 = _a.sent();
                         throw new Error("Something went wrong... ".concat(err_1));
-                    case 3: return [2 /*return*/];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

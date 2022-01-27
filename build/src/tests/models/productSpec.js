@@ -39,14 +39,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var product_1 = require("../../models/product");
 var store = new product_1.ProductStore();
 describe("Product Model", function () {
-    it('index method should return one result', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('Should create a new product', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, store.index()];
+                case 0: return [4 /*yield*/, store.create({ name: 'Gamecube', price: 100 })];
                 case 1:
                     result = _a.sent();
-                    expect(result.length).toEqual(1);
+                    expect(result.name).toEqual('Gamecube');
                     return [2 /*return*/];
             }
         });
@@ -63,15 +63,12 @@ describe("Product Model", function () {
             }
         });
     }); });
-    it('It should create a new product', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('It should return a list of products', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, store.create({ name: 'Playstation', price: 600.00 })];
+                case 0: return [4 /*yield*/, store.index()];
                 case 1:
-                    _a.sent();
-                    return [4 /*yield*/, store.index()];
-                case 2:
                     result = _a.sent();
                     expect(result.length).toEqual(2);
                     return [2 /*return*/];

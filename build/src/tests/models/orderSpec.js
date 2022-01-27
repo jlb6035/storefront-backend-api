@@ -36,42 +36,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var user_1 = require("../../models/user");
-var store = new user_1.UserStore();
-describe("User Model", function () {
-    it('index method should return one result', function () { return __awaiter(void 0, void 0, void 0, function () {
+var order_1 = require("../../models/order");
+var store = new order_1.OrderStore();
+describe("Order Model", function () {
+    it('Should create a new Order', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, store.index()];
+                case 0: return [4 /*yield*/, store.create({ status: 'Active', user_id: 1 })];
                 case 1:
                     result = _a.sent();
-                    expect(result.length).toEqual(1);
+                    expect(result.status).toEqual('Active');
                     return [2 /*return*/];
             }
         });
     }); });
-    it('It should return a user by ID', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('It should return a order by ID', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, store.show('1')];
                 case 1:
                     result = _a.sent();
-                    expect(result.firstname).toEqual('Foo');
+                    expect(result.status).toEqual('Active');
                     return [2 /*return*/];
             }
         });
     }); });
-    it('It should create a new user', function () { return __awaiter(void 0, void 0, void 0, function () {
+    it('It should return a list of orders', function () { return __awaiter(void 0, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, store.create({ firstname: 'James', lastname: 'Brown', password: 'abc123' })];
+                case 0: return [4 /*yield*/, store.index()];
                 case 1:
-                    _a.sent();
-                    return [4 /*yield*/, store.index()];
-                case 2:
                     result = _a.sent();
                     expect(result.length).toEqual(2);
                     return [2 /*return*/];
