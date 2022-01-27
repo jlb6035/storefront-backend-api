@@ -5,7 +5,7 @@ This project is an API built using node.js, typescript, express and postgres. Th
 
 Add a .env file with the following properties...
 
-POSTGRES_HOST=127.0.0.1
+POSTGRES_HOST=
 POSTGRES_DB=
 POSTGRES_TEST_DB=
 POSTGRES_USER=
@@ -14,8 +14,6 @@ BCRYPT_PASSWORD=
 SALT_ROUNDS=10
 TOKEN_SECRET=
 NODE_ENV=dev
-
-Open the database.json file and configure values for properties...
 
 ## Development server
 

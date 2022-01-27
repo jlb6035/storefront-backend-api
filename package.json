@@ -4,7 +4,7 @@
   "description": "backend store api",
   "main": "server.js",
   "scripts": {
-    "test": "npm run build && db-migrate down && db-migrate up  && npm run jasmine && db-migrate down",
+    "test": "npm run build && db-migrate reset --env test && db-migrate up --env test && npm run jasmine && db-migrate reset --env test",
     "start": "npx nodemon src/server.ts",
     "build": "npx tsc",
     "jasmine": "jasmine"
