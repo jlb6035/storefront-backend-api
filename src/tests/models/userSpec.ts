@@ -1,0 +1,21 @@
+import { User, UserStore } from "../../models/user";
+
+const store = new UserStore();
+
+describe("User Model", () => {
+    it('index method should return one result', async () => {
+        const result: User[] = await store.index();
+        expect(result.length).toEqual(1);
+    });
+
+    it('It should return a user by ID', async ()=>{
+        const result: User = await store.show('1');
+        expect(result.firstname).toEqual('Foo');
+    });
+
+    it('It should create a new user', async ()=> {
+        await store.create({firstname: 'Noa', lastname: 'Boyd', password: 'abc123'});
+        const result: User[] = await store.index();
+        expect(result.length).toEqual(2);
+    });
+  });
