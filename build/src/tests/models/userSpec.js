@@ -46,7 +46,7 @@ describe("User Model", function () {
                 case 0: return [4 /*yield*/, store.index()];
                 case 1:
                     result = _a.sent();
-                    expect(result.length).toEqual(1);
+                    expect(result.length).toEqual(5);
                     return [2 /*return*/];
             }
         });
@@ -73,7 +73,7 @@ describe("User Model", function () {
                     return [4 /*yield*/, store.index()];
                 case 2:
                     result = _a.sent();
-                    expect(result.length).toEqual(2);
+                    expect(result.length).toEqual(6);
                     return [2 /*return*/];
             }
         });

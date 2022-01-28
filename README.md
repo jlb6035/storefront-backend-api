@@ -3,7 +3,7 @@ This project is an API built using node.js, typescript, express and postgres. Th
 
 ## Environment setup
 
-Add a .env file with the following properties...
+Clone the project, run npm install, setup a postgres DB. Create 2 databases, one will be a test DB, and add a .env file with the following properties...
 
 POSTGRES_HOST=
 POSTGRES_DB=
@@ -22,7 +22,3 @@ Run `npm run start` for a dev server. Navigate to `http://localhost:3000/`. The 
 ## Running unit tests
 Inside .env file set NODE_ENV=test
 Run `npm run test` to execute the unit tests via Jasmine
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

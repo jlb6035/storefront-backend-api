@@ -35,42 +35,49 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var order_1 = require("../../models/order");
-var store = new order_1.OrderStore();
-describe("Order Model", function () {
-    it('Should create a new Order', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var result;
+var supertest_1 = __importDefault(require("supertest"));
+var server_1 = __importDefault(require("../../server"));
+var request = (0, supertest_1.default)(server_1.default);
+describe('Test Product Handlers', function () {
+    it('Successfully returns a list of products', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, store.create({ status: 'Active', user_id: 1 })];
+                case 0: return [4 /*yield*/, request.get('/products')];
                 case 1:
-                    result = _a.sent();
-                    expect(result.status).toEqual('Active');
+                    response = _a.sent();
+                    expect(response.status).toBe(200);
                     return [2 /*return*/];
             }
         });
     }); });
-    it('It should return a order by ID', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var result;
+    it('Successfully returns a product based on id', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, store.show('1')];
+                case 0: return [4 /*yield*/, request.get('/products/1')];
                 case 1:
-                    result = _a.sent();
-                    expect(result.status).toEqual('Active');
+                    response = _a.sent();
+                    expect(response.status).toBe(200);
                     return [2 /*return*/];
             }
         });
     }); });
-    it('It should return a list of orders', function () { return __awaiter(void 0, void 0, void 0, function () {
-        var result;
+    it('Should create a new product', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var res, response;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, store.index()];
+                case 0: return [4 /*yield*/, request.post('/users').send({ firstname: 'Test3', lastname: 'User', password: 'abc123' })];
                 case 1:
-                    result = _a.sent();
-                    expect(result.length).toEqual(3);
+                    res = _a.sent();
+                    return [4 /*yield*/, request.post('/products').send({ name: 'Nintendo 64', price: 100 }).set('Authorization', "Bearer ".concat(res.body))];
+                case 2:
+                    response = _a.sent();
+                    expect(response.status).toBe(200);
                     return [2 /*return*/];
             }
         });

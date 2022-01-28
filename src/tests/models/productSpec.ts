@@ -15,6 +15,6 @@ describe("Product Model", () => {
 
     it('It should return a list of products', async ()=> {
         const result: Product[] = await store.index();
-        expect(result.length).toEqual(2);
+        expect(result.length).toEqual(3);
     });
   });
