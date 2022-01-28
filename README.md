@@ -15,6 +15,40 @@ SALT_ROUNDS=10
 TOKEN_SECRET=
 NODE_ENV=dev
 
+### PostgreSQL
+
+ Install [PostgreSQL](https://www.postgresql.org) from their homepage.
+
+Start Postgres. The port will run on 127.0.0.1
+
+```
+(sudo) su - postgres
+```
+
+Enter the terminal
+
+```
+psql postgres
+```
+
+Create the database
+
+```
+CREATE DATABASE <db_name>;
+```
+
+Create user and password
+
+```
+CREATE USER <user_name> WITH PASSWORD '<password>';
+
+```
+
+Connect to the database
+
+```
+\c <db_name>
+
 ## Development server
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.

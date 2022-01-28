@@ -4,5 +4,3 @@ CREATE TABLE IF NOT EXISTS order_products(
     order_id bigint REFERENCES orders(id),
     product_id bigint REFERENCES products(id)
 );
-
-INSERT INTO order_products (quantity, order_id, product_id) VALUES (3, 1, 1);

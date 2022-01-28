@@ -3,5 +3,3 @@ CREATE TABLE IF NOT EXISTS orders (
     status VARCHAR(64),
     user_id bigint REFERENCES users(id)
 );
-
-INSERT INTO orders (status, user_id) VALUES ('Active', 1);

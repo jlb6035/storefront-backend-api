@@ -15,6 +15,6 @@ describe("Order Model", () => {
 
     it('It should return a list of orders', async ()=> {
         const result: Order[] = await store.index();
-        expect(result.length).toEqual(3);
+        expect(result.length).toEqual(2);
     });
   });
