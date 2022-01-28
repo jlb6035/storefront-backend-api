@@ -48,6 +48,7 @@ Connect to the database
 
 ```
 \c <db_name>
+```
 
 ## Development server
 
