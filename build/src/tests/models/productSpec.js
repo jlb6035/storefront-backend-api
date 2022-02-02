@@ -43,7 +43,7 @@ describe("Product Model", function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, store.create({ name: 'Gamecube', price: 100 })];
+                case 0: return [4 /*yield*/, store.create({ name: 'Gamecube', price: 100, url: 'https://upload.wikimedia.org/wikipedia/commons/d/d1/GameCube-Set.jpg', description: 'A really fun gaming console' })];
                 case 1:
                     result = _a.sent();
                     expect(result.name).toEqual('Gamecube');

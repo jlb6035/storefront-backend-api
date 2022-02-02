@@ -3,10 +3,12 @@ import bodyParser from 'body-parser';
 import productRoutes from "./handlers/product";
 import userRoutes from "./handlers/user";
 import orderRoutes from "./handlers/order";
+import cors from "cors";
 
 const app = express();
 const port = 3000;
 
+app.use(cors())
 app.use(bodyParser.json())
 
 productRoutes(app);

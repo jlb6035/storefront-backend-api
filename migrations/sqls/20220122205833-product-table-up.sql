@@ -1,2 +1,4 @@
-CREATE TABLE IF NOT EXISTS products (id SERIAL PRIMARY KEY, name varchar(100), price NUMERIC(8,2));
-INSERT INTO products (name, price) VALUES ('Xbox', 500.00);
+CREATE TABLE IF NOT EXISTS products (id SERIAL PRIMARY KEY, name varchar(100), price NUMERIC(8,2), url varchar(200), description varchar(100));
+INSERT INTO products (name, price, url, description) VALUES ('Xbox', 500.00, 'https://m.media-amazon.com/images/I/41oALMHapnL.jpg', 'The best gaming system ever!');
+INSERT INTO products (name, price, url, description) VALUES ('Gamecube', 200.00, 'https://upload.wikimedia.org/wikipedia/commons/d/d1/GameCube-Set.jpg', 'This was fun too!');
+INSERT INTO products (name, price, url, description) VALUES ('Playstation 2', 350.00, 'https://i5.walmartimages.com/asr/a0384c4f-40db-45fe-8554-7c9e323d8ae7_1.f4629d0529dcb28e49010abafa93d628.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF', 'So many memories!');

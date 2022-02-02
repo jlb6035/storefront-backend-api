@@ -8,7 +8,8 @@ const {
     POSTGRES_DB,
     POSTGRES_USER,
     POSTGRES_PASSWORD,
-    POSTGRES_TEST_DB
+    POSTGRES_TEST_DB,
+    PORT
 } = process.env;
 
 let client;
@@ -20,6 +21,7 @@ if(process.env.NODE_ENV === 'dev') {
       database: POSTGRES_DB,
       user: POSTGRES_USER,
       password: POSTGRES_PASSWORD,
+      port: PORT as unknown as number,
     })
   }
   
@@ -29,6 +31,7 @@ if(process.env.NODE_ENV === 'dev') {
       database: POSTGRES_TEST_DB,
       user: POSTGRES_USER,
       password: POSTGRES_PASSWORD,
+      port: PORT as unknown as number,
     })
   }
 

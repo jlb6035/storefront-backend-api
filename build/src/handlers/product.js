@@ -82,7 +82,7 @@ var create = function (req, res) { return __awaiter(void 0, void 0, void 0, func
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 (0, tokenValidation_1.tokenValidation)(req, res);
-                return [4 /*yield*/, store.create({ name: req.body.name, price: req.body.price })];
+                return [4 /*yield*/, store.create({ name: req.body.name, price: req.body.price, url: req.body.url, description: req.body.description })];
             case 1:
                 results = _a.sent();
                 res.json(results);
