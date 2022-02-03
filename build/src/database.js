@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var dotenv_1 = __importDefault(require("dotenv"));
 var pg_1 = require("pg");
 dotenv_1.default.config();
-var _a = process.env, POSTGRES_HOST = _a.POSTGRES_HOST, POSTGRES_DB = _a.POSTGRES_DB, POSTGRES_USER = _a.POSTGRES_USER, POSTGRES_PASSWORD = _a.POSTGRES_PASSWORD, POSTGRES_TEST_DB = _a.POSTGRES_TEST_DB;
+var _a = process.env, POSTGRES_HOST = _a.POSTGRES_HOST, POSTGRES_DB = _a.POSTGRES_DB, POSTGRES_USER = _a.POSTGRES_USER, POSTGRES_PASSWORD = _a.POSTGRES_PASSWORD, POSTGRES_TEST_DB = _a.POSTGRES_TEST_DB, PORT = _a.PORT;
 var client;
 if (process.env.NODE_ENV === 'dev') {
     client = new pg_1.Pool({
@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === 'dev') {
         database: POSTGRES_DB,
         user: POSTGRES_USER,
         password: POSTGRES_PASSWORD,
+        port: PORT,
     });
 }
 if (process.env.NODE_ENV === 'test') {
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV === 'test') {
         database: POSTGRES_TEST_DB,
         user: POSTGRES_USER,
         password: POSTGRES_PASSWORD,
+        port: PORT,
     });
 }
 console.log(process.env.NODE_ENV);

@@ -5,7 +5,7 @@
   "main": "build/src/server.js",
   "scripts": {
     "test": "npm run build && db-migrate reset --env test && db-migrate up --env test && npm run jasmine && db-migrate reset --env test",
-    "start": "node server.ts",
+    "start": "node build/src/server.js",
     "build": "npx tsc",
     "jasmine": "jasmine"
   },
