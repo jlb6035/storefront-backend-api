@@ -2,10 +2,10 @@
   "name": "storefront-backend",
   "version": "1.0.0",
   "description": "backend store api",
-  "main": "server.js",
+  "main": "build/src/server.js",
   "scripts": {
     "test": "npm run build && db-migrate reset --env test && db-migrate up --env test && npm run jasmine && db-migrate reset --env test",
-    "start": "npx nodemon src/server.ts",
+    "start": "node server.ts",
     "build": "npx tsc",
     "jasmine": "jasmine"
   },
