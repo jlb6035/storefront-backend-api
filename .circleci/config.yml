@@ -4,7 +4,8 @@ version: 2.1
 orbs:
   node: circleci/node@4.1.0
   aws-cli: circleci/aws-cli@2.0.6
-  eb-cli: circleci/aws-elastic-beanstalk@2.0.1
+  aws-elastic-beanstalk: circleci/aws-elastic-beanstalk@2.0.1
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -19,6 +20,7 @@ jobs:
       - node/install
       - checkout
       - aws-cli/setup
+      - eb/setup
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
@@ -28,27 +30,6 @@ jobs:
       - run:
           name: npm run build
           command: npm run build
-  prepare_deploy:
-    docker:
-      - image: "cimg/base:stable"
-    steps:
-      - node/install
-      - checkout
-      - run:
-          name: Preparing artifacts
-          command: npm run deploy:all
-      - persist_to_workspace:
-          root: ./deploy
-          paths:
-            - ./*
-  deploy:
-    docker:
-      - image: "cimg/base:stable"
-    steps:
-      - attach_workspace:
-          at: ./
-      - aws-cli/setup
-      - eb-cli/setup
       - run:
           name: Deploy App
           command: |
@@ -61,10 +42,3 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
-      - prepare_deploy:
-          requires:
-            - build
-            - test
-      - deploy:
-          requires:
-            - prepare_deploy
