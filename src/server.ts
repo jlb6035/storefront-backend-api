@@ -1,8 +1,6 @@
 import express from "express";
 import bodyParser from 'body-parser';
 import productRoutes from "./handlers/product";
-import userRoutes from "./handlers/user";
-import orderRoutes from "./handlers/order";
 import cors from "cors";
 
 const app = express();
@@ -11,10 +9,11 @@ const port = process.env.PORT || 3000;
 app.use(cors())
 app.use(bodyParser.json())
 
-productRoutes(app);
-userRoutes(app);
-orderRoutes(app);
+app.get("/", (req, res) => {
+    res.send("Deployed from EB CLI!");
+});
 
+productRoutes(app);
 
 app.listen(port, ()=>{
     console.log(`Starting app on port ${port}`);

@@ -1,6 +1,5 @@
 import express, { Request, Response } from 'express';
 import { ProductStore } from '../models/product';
-import { tokenValidation } from '../utils/tokenValidation';
 
 const store = new ProductStore();
 
@@ -24,7 +23,6 @@ const show = async (req: Request, res: Response)=>{
 
 const create = async(req: Request, res: Response)=>{
     try{
-        tokenValidation(req, res);
         const results = await store.create({name: req.body.name, price: req.body.price, url: req.body.url, description: req.body.description});
         res.json(results);
     }catch(err){
