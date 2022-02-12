@@ -18,8 +18,8 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
       - run:
-          name: npm run install
-          command: npm run install
+          name: npm install
+          command: npm install
       - run:
           name: npm run build
           command: npm run build
