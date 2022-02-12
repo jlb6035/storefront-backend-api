@@ -28,6 +28,27 @@ jobs:
       - run:
           name: npm run build
           command: npm run build
+  prepare_deploy:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - node/install
+      - checkout
+      - run:
+          name: Preparing artifacts
+          command: npm run deploy:all
+      - persist_to_workspace:
+          root: ./deploy
+          paths:
+            - ./*
+  deploy:
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - attach_workspace:
+          at: ./
+      - aws-cli/setup
+      - eb-cli/setup
       - run:
           name: Deploy App
           command: |
@@ -40,3 +61,10 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - prepare_deploy:
+          requires:
+            - build
+            - test
+      - deploy:
+          requires:
+            - prepare_deploy
